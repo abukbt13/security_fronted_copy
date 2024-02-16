@@ -1,7 +1,7 @@
 
 <script setup>
-import Header from "@/views/includes/Header.vue";
-import Footer from "@/views/includes/Footer.vue";
+// import Header from "@/views/includes/Header.vue";
+// import Footer from "@/views/includes/Footer.vue";
 import {ref} from "vue";
 document.title = "TopGuard";
 
