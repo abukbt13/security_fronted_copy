@@ -296,7 +296,7 @@ onMounted(()=>{
               <div class="modal-body">
                 <textarea rows="2" class="form-control mb-2">{{singlevideo.description}}</textarea>
 
-                              <video :src="'http://127.0.0.1:8000/storage/Evidences/Videos/' + singlevideo.video" controls></video>
+                              <video :src="storage +'Videos/'+ singlevideo.video"  controls></video>
                 <button class="btn btn-success btn-primary float-end me-4">Edit</button>
               </div>
               <div class="modal-footer">
@@ -384,7 +384,7 @@ onMounted(()=>{
                <textarea  rows="2" class="form-control mb-3">{{description}}</textarea>
                <textarea  rows="2" class="form-control mb-3">{{picture}}</textarea>
 
-               <img :src="'http://127.0.0.1:8000/storage/Evidences/Pictures/'+picture" style="width: 100%;height: 100%">
+               <img :src="storage +'Pictures/'+ picture" style="width: 100%;height: 100%">
              </div>
             </div>
           </div>
@@ -461,7 +461,7 @@ onMounted(()=>{
               <div class="m-2">
                 <textarea rows="2" class="form-control mb-2">{{doc_description}}</textarea>
 
-                <embed :src="'http://127.0.0.1:8000/storage/Evidences/documents/'+doc_document" style="width: 30rem; height: 30rem;" type="">
+                <embed :src="storage +'Documents/'+ doc_document" style="width: 30rem; height: 30rem;" type="">
              <button class="btn btn-success btn-primary float-end me-4">Edit</button>
               </div>
             </div>
