@@ -1,5 +1,3 @@
-
-
 <script setup>
 import Header from "@/views/includes/Header.vue";
 import Footer from "@/views/includes/Footer.vue";
@@ -117,7 +115,7 @@ onMounted(()=>{
   <div  class="">
 
 
-    <div class="modal fade" id="add_admin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="add_admin" data-bs-toggle="modal"data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -151,7 +149,7 @@ onMounted(()=>{
       </div>
     </div>
 
-    <div class="modal fade" id="view_logs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="view_logs" data-bs-toggle="modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -193,7 +191,7 @@ onMounted(()=>{
         </div>
       </div>
     </div>
-    <div class="modal fade" id="case_file" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="case_file" data-bs-toggle="modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">

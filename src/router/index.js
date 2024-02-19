@@ -4,6 +4,7 @@ import Login from '@/views/auth/Login.vue'
 import Register from '@/views/auth/Register.vue'
 import Verify from '@/views/auth/Verify.vue'
 import Admin_Dashboard from '@/views/dashboard/admin/Index.vue'
+import Super_admin_Dashboard from "@/views/dashboard/super_admin/Index.vue";
 import Case_details from '@/views/dashboard/admin/Case_details.vue'
 import Show_admin from '@/views/dashboard/super_admin/Show_admin.vue'
 import View_evidence from "@/views/dashboard/admin/View_evidence.vue";
@@ -31,6 +32,10 @@ const router = createRouter({
     {
       path: '/dashboard/admin',
       component : Admin_Dashboard
+    },
+    {
+      path: '/dashboard/super_admin',
+      component : Super_admin_Dashboard
     },
     {
       path: '/dashboard/admin/case_details/:case_id/:key_id',
