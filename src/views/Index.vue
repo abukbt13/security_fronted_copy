@@ -14,10 +14,10 @@ document.title = "TopGuard";
 
     <div class="row mt-3">
       <div class="col-sm-12 col-md-6 col-lg-6  d-flex flex-column justify-content-center">
-        <h2 class="text-center  text-primary">
+        <h2 style="font-size: 23px" class="text-center  text-primary">
           Your top software guard
         </h2>
-        <p class="text-center text-primary ">
+        <p style="font-size: 20px;" class="text-center text-primary ">
           Secure your data  and information here to ensure good runtime of your business or your individual sensitive  personal information. We keep your information safe here preventing your data from any loss or making sure they are confidential.
         </p>
 
@@ -25,10 +25,11 @@ document.title = "TopGuard";
           <router-link to="register" style="background-color: pink;color:blue;" class="btn">Get Started</router-link>
         </div>
       </div>
+      <div  class="col-sm-12 col-md-6 col-lg-6 intro bg-light text-center">
+        At TopGuard Cloud, we strive to build novel software solutions to assist Criminal Investigations through <br> efficient case management, enhanced investigative workflow and utilising<br>  digital forensic intelligence.
+      </div>
     </div>
-    <div class="intro bg-light text-center">
-      At TopGuard Cloud, we strive to build novel software solutions to assist Criminal Investigations through <br> efficient case management, enhanced investigative workflow and utilising<br>  digital forensic intelligence.
-    </div>
+
 
 
     <!--    features-->
