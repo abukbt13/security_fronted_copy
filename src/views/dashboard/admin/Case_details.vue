@@ -116,10 +116,11 @@ const Edit_Description =async () =>{
   const res = await axios.get(base_url.value + 'case/single/'+ case_id + '/'  + key_id + '/' + key.value, authHeader)
   if (res.data.status === 'failed') {
     message.value = res.data.message
+
   }
   else {
     const res = await axios.post(base_url.value + 'case/update/description/'+ case_id,formData, authHeader)
-    console.log(res.data)
+    await getSingleCases()
   }
 
 }
