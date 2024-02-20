@@ -115,15 +115,20 @@ onMounted(()=>{
   <div  class="">
 
 
-    <div class="modal fade" id="add_admin" data-bs-toggle="modal"data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="add_admin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5 text-primary" id="staticBackdropLabel">Create New Admin</h1>
-            <button type="button" @click="resetform()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Admin</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
             <form @submit.prevent="createAdmin">
 
               <div class="mb-3">
@@ -144,12 +149,11 @@ onMounted(()=>{
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </div>
 
-    <div class="modal fade" id="view_logs" data-bs-toggle="modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="view_logs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -191,7 +195,7 @@ onMounted(()=>{
         </div>
       </div>
     </div>
-    <div class="modal fade" id="case_file" data-bs-toggle="modal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="case_file" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
