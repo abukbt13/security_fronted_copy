@@ -25,9 +25,14 @@ const login =async () => {
   if(res.status=== 200) {
     if (res.data.status === 'success') {
       localStorage.setItem('token', res.data.token);
-
-      const unique_id = ref(res.data.user.id);
-      await router.push('/verify/' + unique_id.value);
+      if(res.data.user.role == 'super_admin') {
+        await router.push('/dashboard/super_admin')
+      }
+      else{
+        await router.push('/dashboard/admin')
+      }
+      // const unique_id = ref(res.data.user.id);
+      // await router.push('/verify/' + unique_id.value);
 
     }
     else if(res.data.status === 'failed') {
