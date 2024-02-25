@@ -29,38 +29,55 @@ const createAdmin =async () => {
   formData.append('email', email.value)
   formData.append('name', name.value)
   formData.append('password', password.value)
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9!@#\$%\^&\*])(?=.{8,})/;
+  const isValidPassword = regex.test(password.value);
+
+
+
+
+
   if(edit.value === true) {
-    // alert('creating new')
-    const res = await axios.post(base_url.value+'admin/create',formData,authHeader)
-    if(res.status === 200) {
-      if(res.data.status === 'success'){
-        status.value='Admin successfully created'
-        clearFields()
-        getlogs()
-        getAdmins()
-        getCases()
-      }
-      else {
-        status.value=res.data
+    if (!isValidPassword) {
+      // Handle invalid password here, maybe show an error message
+      status.value='Create a strong password eight characters long and combination of symbols, numbers and different cases';
+      return;
+    }
+   else {
+      // alert('creating new')
+      const res = await axios.post(base_url.value+'admin/create',formData,authHeader)
+      if(res.status === 200) {
+        if(res.data.status === 'success'){
+          status.value='Admin successfully created'
+          clearFields()
+          getlogs()
+          getAdmins()
+          getCases()
+        }
+        else {
+          status.value=res.data
+        }
       }
     }
   }
   else {
-    // alert('editing')
-    const res = await axios.post(`${base_url.value}admin/edit/${user_id.value}`, formData, authHeader);
-    if(res.status === 200) {
-      if(res.data.status === 'success'){
-        status.value='Admin edited successfully'
-        clearFields()
-        getlogs()
-        getAdmins()
-        getCases()
-      }
-      else {
-        status.value=res.data
+
+      // alert('editing')
+      const res = await axios.post(`${base_url.value}admin/edit/${user_id.value}`, formData, authHeader);
+      if(res.status === 200) {
+        if(res.data.status === 'success'){
+          status.value='Admin edited successfully'
+          clearFields()
+          getlogs()
+          getAdmins()
+          getCases()
+        }
+        else {
+          status.value=res.data
+        }
       }
     }
-  }
+
+
 
 }
 
@@ -111,7 +128,7 @@ onMounted(()=>{
   <div class="head-section">
     <Header />
   </div>
-  <h2 v-if="status" class="p-3 bg-info">{{ status }}</h2>
+  <h2 v-if="status" class="p-3 m-4 bg-danger text-white">{{ status }}</h2>
   <div  class="">
 
 
@@ -139,7 +156,7 @@ onMounted(()=>{
               </div>
               <div class="mb-3" v-show="edit">
                 <label for="exampleFormControlInput1" class="form-label">Password</label>
-                <input type="password" class="form-control" v-model="password">
+                <input type="password" class="form-control" v-model="password" placeholder="Create a strong password eight characters long and combination of symbols and different cases">
               </div>
               <div class="">
                 <button type="submit" v-if="edit" data-bs-dismiss="modal" class="float-end  btn btn-primary btn-block">Create Admin</button>
@@ -260,7 +277,7 @@ onMounted(()=>{
           <tr>
             <td class="border">#</td>
             <td class="border">Email</td>
-            <td class="border">Password</td>
+            <td class="border">Full Name</td>
             <td class="border">Operation</td>
           </tr>
 
