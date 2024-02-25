@@ -156,7 +156,7 @@ onMounted(()=>{
               </div>
               <div class="mb-3" v-show="edit">
                 <label for="exampleFormControlInput1" class="form-label">Password</label>
-                <input type="password" class="form-control" v-model="password" placeholder="Create a strong password eight characters long and combination of symbols and different cases">
+                <input type="password" class="form-control" v-model="password" >
               </div>
               <div class="">
                 <button type="submit" v-if="edit" data-bs-dismiss="modal" class="float-end  btn btn-primary btn-block">Create Admin</button>
