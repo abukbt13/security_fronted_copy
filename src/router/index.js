@@ -3,6 +3,7 @@ import Index from '@/views/Index.vue'
 import Login from '@/views/auth/Login.vue'
 import Register from '@/views/auth/Register.vue'
 import Verify from '@/views/auth/Verify.vue'
+import Forget_Password from '@/views/auth/Forget_Password.vue'
 import Admin_Dashboard from '@/views/dashboard/admin/Index.vue'
 import Super_admin_Dashboard from "@/views/dashboard/super_admin/Index.vue";
 import Case_details from '@/views/dashboard/admin/Case_details.vue'
@@ -22,8 +23,8 @@ const router = createRouter({
       component : Login
     },
     {
-      path: '/register',
-      component : Register
+      path: '/forget_password',
+      component :Forget_Password
     },
     {
       path: '/verify/:id',

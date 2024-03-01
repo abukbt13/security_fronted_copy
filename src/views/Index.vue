@@ -48,9 +48,8 @@ document.title = "TopGuard";
             </div>
             <h2 class="text-center">Manage</h2>
             <p class="text-center">
-              Manage your department's forensic caseload simply and easily using TopGuard.
-              Create, allocate, sort, search and prioritise cases with ease. Identify trends,
-              monitor progress and improve departmental efficiency by using our system
+              Manage your department's forensic caseload simply and easily using forensic management system .
+              securely manage case evidences with ease.
             </p>
           </div>
         </div>

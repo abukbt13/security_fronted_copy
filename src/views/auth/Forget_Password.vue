@@ -6,17 +6,17 @@ import {useRouter} from "vue-router";
 const router = useRouter()
 const email = ref('')
 const password = ref('')
+const status = ref('')
 
 import {auth} from "@/compossables/auth";
 import Header from "@/views/includes/Header.vue";
 const {base_url,authHeader} = auth()
 
 const unique_id = ref(null)
-const status = ref('')
 
-const login =async () => {
-  if(email.value=='' && password.value==''){
-    status.value = 'Please fill all fields'
+const forgetPass =async () => {
+  if(email.value==''){
+    status.value = 'Email is Required'
   }
   const formData = new FormData();
   formData.append('email', email.value)
@@ -55,25 +55,20 @@ const login =async () => {
     <div class="row px-3 d-flex justify-content-center align-items-center h-100">
 
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="error text-center bg-dark text-primary text-uppercase p-2" v-if="status">{{status + ' !'}}</div>
+        <div class="error text-center bg-danger text-white text-uppercase p-2" v-if="regerror">{{regerror + ' !'}}</div>
 
         <div class="error text-center bg-danger text-white text-uppercase">{{unique_id}}</div>
-        <h2 class="text-center text-uppercase">Login here</h2>
-        <form @submit.prevent="login">
+        <h2 class="text-center text-uppercase">Reset Password</h2>
+        <form @submit.prevent="forgetPass">
+
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <label for="exampleFormControlInput1" class="form-label">Enter Email address You registered with</label>
             <input type="email" class="form-control" v-model="email" placeholder="Enter your email here">
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Password</label>
-            <input type="password" class="form-control" v-model="password" placeholder="password">
+          <div class="">
+            <button type="submit" class="w-100 btn btn-primary btn-block">Request reset</button>
           </div>
 
-          <div class="">
-            <button type="submit" class="w-100 btn btn-primary btn-block">Login</button>
-          </div>
-          <p class="fs-2 mt-2">Forget Password? <router-link to="/forget_password">click here</router-link></p>
-          <br>
         </form>
       </div>
 
