@@ -20,21 +20,12 @@ const forgetPass =async () => {
   }
   const formData = new FormData();
   formData.append('email', email.value)
-  formData.append('password', password.value)
-  const res = await axios.post(base_url.value+'auth/login',formData)
+  const res = await axios.post(base_url.value+'auth/forget_pass',formData)
   if(res.status=== 200) {
     if (res.data.status === 'success') {
-      localStorage.setItem('token', res.data.token);
-      if(res.data.user.role == 'super_admin') {
-        await router.push('/dashboard/super_admin')
-      }
-      else{
-        await router.push('/dashboard/admin')
-      }
-      // const unique_id = ref(res.data.user.id);
-      // await router.push('/verify/' + unique_id.value);
-
+      await router.push('/validate/' + email.value);
     }
+
     else if(res.data.status === 'failed') {
       status.value = res.data.message;
     }

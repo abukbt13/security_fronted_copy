@@ -16,6 +16,7 @@ const cases = ref([])
 const edit =ref(true)
 const status =ref('')
 const user_id =ref('')
+const phone =ref('')
 
 function clearFields(){
   name.value = ''
@@ -28,6 +29,7 @@ const createAdmin =async () => {
   const formData = new FormData();
   formData.append('email', email.value)
   formData.append('name', name.value)
+  formData.append('phone', phone.value)
   formData.append('password', password.value)
   const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9!@#\$%\^&\*])(?=.{8,})/;
   const isValidPassword = regex.test(password.value);
@@ -108,12 +110,14 @@ function resetform(){
   edit.value = true
   email.value = ''
   name.value = ''
+  phone.value = ''
   password.value=''
 }
 function editAdmin($data){
   user_id.value = $data.id
   edit.value = false
   email.value = $data.email
+  phone.value = $data.phone
   name.value = $data.name
 }
 onMounted(()=>{
@@ -153,6 +157,10 @@ onMounted(()=>{
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
                 <input type="email"  class="form-control" v-model="email">
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+                <input type="number"  class="form-control" v-model="phone">
               </div>
               <div class="mb-3" v-show="edit">
                 <label for="exampleFormControlInput1" class="form-label">Password</label>
