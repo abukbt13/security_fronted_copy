@@ -1,5 +1,4 @@
 
-
 <script setup>
 import Header from "@/views/includes/Header.vue";
 import Footer from "@/views/includes/Footer.vue";
@@ -10,6 +9,7 @@ import {auth} from "@/compossables/auth";
 import router from "@/router";
 const {base_url,authUser,authHeader} = auth()
 
+document.title = "Admin Dashboard"
 const edit_id = ref('')
 const case_state = ref('')
 
@@ -128,6 +128,7 @@ function deactivateCAse(id){
         text: "Case have been deactivated.",
         icon: "success"
       });
+      getdeactivatedCases()
       getCases()
     }
   });
@@ -150,6 +151,7 @@ function activateCAse(id){
         icon: "success"
       });
       getCases()
+      getdeactivatedCases()
     }
   });
 }
@@ -270,7 +272,7 @@ onMounted(()=>{
                     <td class="border">{{ deactivated_case.defendant_name }}</td>
                     <td >
                       <button class="btn bg-secondary" @click="activateCAse(deactivated_case.id)">Activate</button>
-                      <router-link :to="`/dashboard/admin/case_details/${deactivated_case.id}/${deactivated_case.key}`" class="btn m-2 bg-primary">More details</router-link>
+                      <a :href="`/dashboard/admin/case_details/${deactivated_case.id}/${deactivated_case.key}`" class="btn m-2 bg-primary">More details</a>
                     </td>
                   </tr>
                 </table>
@@ -295,20 +297,16 @@ onMounted(()=>{
           <tr class="bg-secondary text-white text-center text-uppercase">
             <td class="border">#</td>
             <td class="border">case Name</td>
-            <td class="border">Plaintiff</td>
-            <td class="border">Defendant</td>
-            <td class="border">Operations</td>
+            <td class="border">Description</td>
           </tr>
 
           <!-- Table Rows (Generated dynamically using Vue.js) -->
           <tr  v-for="cases in case_date" :key="cases">
-            <td class="border">{{ cases.id }}</td>
             <td class="border">{{ cases.case_name }}</td>
-            <td class="border">{{ cases.plaintiff_name }}</td>
-            <td class="border">{{ cases.defendant_name }}</td>
+            <td class="border">{{ cases.description }}</td>
             <td >
-              <button class="btn bg-secondary" @click="deactivateCAse(cases.id)">Deactivate</button>
-              <router-link :to="`/dashboard/admin/case_details/${cases.id}/${cases.key}`" class="btn m-2 bg-primary">More details</router-link>
+<!--              <button class="btn bg-secondary" @click="deactivateCAse(cases.id)">Deactivate{{cases.id}}</button>-->
+              <router-link :to="`/dashboard/admin/case_details/${cases.id}`" class="btn m-2 bg-primary">More details</router-link>
             </td>
           </tr>
         </table>

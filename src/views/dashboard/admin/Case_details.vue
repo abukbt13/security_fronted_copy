@@ -36,7 +36,7 @@ function pictureUpload(e){
 
 
 const  getPicture = async () => {
-  const res = await axios.get(base_url.value + 'evidence/picture/show/'+case_id, authHeader)
+  const res = await axios.get(base_url.value + 'evidence/picture/show/'+key_id, authHeader)
   if(res){
     all_pictures.value = res.data.picture
   }
@@ -47,7 +47,7 @@ const addPicture =async () => {
   formData.append('picture', picture.value)
   formData.append('description', description.value)
 
-  const res = await axios.post(base_url.value+'evidence/picture/add/'+case_id,formData,authHeader)
+  const res = await axios.post(base_url.value+'evidence/picture/add/'+key_id,formData,authHeader)
   if(res.data.status === 'success') {
     status.value = res.data.message
     await getPicture()
@@ -66,14 +66,14 @@ const addVideo =async () => {
   formData.append('video', video.value)
   formData.append('description', description.value)
 
-  const res = await axios.post(base_url.value+'video/add/'+case_id,formData,authHeader)
+  const res = await axios.post(base_url.value+'video/add/'+key_id,formData,authHeader)
   if(res.data.status === 'success') {
     status.value = res.data.message
     await getVideo()
   }
 }
 const  getVideo = async () => {
-  const res = await axios.get(base_url.value + 'video/show/'+case_id, authHeader)
+  const res = await axios.get(base_url.value + 'video/show/'+key_id, authHeader)
   if(res){
     all_videos.value = res.data.videos
   }
@@ -81,22 +81,22 @@ const  getVideo = async () => {
 }
 const case_description=ref('')
 const  getSingleCases = async () => {
-
-  const res = await axios.get(base_url.value + 'case/single/'+ case_id + '/'  + key_id + '/' + secret.value, authHeader)
+  const res = await axios.get(base_url.value + 'case/single/'+ key_id + '/'  + secret.value, authHeader)
   if(res.status=== 200) {
     if (res.data.status === 'failed') {
       enter_secret.value = true
       message.value = "res.data.message"
     }
     else {
+      enter_secret.value = false
       await getPicture()
       await getDocument()
       await getVideo()
 
       view.value = true
-      evidences.value =res.data.data
-      update_description.value =res.data.data.description
-      enter_secret.value = false
+      evidences.value =res.data.cases
+      update_description.value =res.data.cases[0].description
+
     }
   }
   else {
@@ -113,13 +113,12 @@ const Edit_Description =async () =>{
   const formData = new FormData();
   formData.append('description', update_description.value)
   formData.append('key', key.value)
-  const res = await axios.get(base_url.value + 'case/single/'+ case_id + '/'  + key_id + '/' + key.value, authHeader)
+  const res = await axios.get(base_url.value + 'case/single/' + key_id + '/' + key.value, authHeader)
   if (res.data.status === 'failed') {
     message.value = res.data.message
-
   }
   else {
-    const res = await axios.post(base_url.value + 'case/update/description/'+ case_id,formData, authHeader)
+    const res = await axios.post(base_url.value + 'case/update/description/'+ key_id,formData, authHeader)
     await getSingleCases()
   }
 
@@ -129,7 +128,7 @@ const addDocument =async () => {
   formData.append('document', document.value)
   formData.append('description', description.value)
 
-  const res = await axios.post(base_url.value+'document/add/'+case_id,formData,authHeader)
+  const res = await axios.post(base_url.value+'document/add/'+key_id,formData,authHeader)
   if(res.data.status === 'success') {
     status.value = res.data.message
     await getDocument()
@@ -137,11 +136,10 @@ const addDocument =async () => {
 
 }
 const  getDocument = async () => {
-  const res = await axios.get(base_url.value + 'document/show/'+case_id, authHeader)
+  const res = await axios.get(base_url.value + 'document/show/'+key_id, authHeader)
   if(res){
     all_docs.value = res.data.documents
   }
-
 }
 const singlevideo = ref([])
 function showSingleVideo(data){
@@ -186,17 +184,20 @@ onMounted(()=>{
     </div>
   </div>
 </div>
+
+
+
 <h3 class="p-4 bg-info text-white" v-if="status">{{status}}</h3>
+
 
   <div v-if="view" class="view m-3">
 <!--    description-->
-
     <div  class="description">
      <h3 class="text-primary">Description</h3>
 
-      <textarea class="form-control"   rows="5">{{evidences.description}}</textarea>
+      <textarea class="form-control"   rows="5">{{evidences[0].description}}</textarea>
       <button class="btn  mt-2 btn-primary float-end"  data-bs-toggle="modal" data-bs-target="#editDescription">
-        Edit <i  class="bi bi-pen-fill"></i>
+        Edit description <i  class="bi bi-pen-fill"></i>
       </button>
 
       <div class="modal fade" id="editDescription" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -216,7 +217,7 @@ onMounted(()=>{
                 <input type="text" v-model="key">
               </div>
              <div class="">
-               <button type="submit" class="btn btn-primary mb-4 me-4 float-end mt-3">Update</button>
+               <button type="submit"  data-bs-dismiss="modal"   class="btn btn-primary mb-4 me-4 float-end mt-3">Update</button>
              </div>
             </form>
           </div>
@@ -355,7 +356,7 @@ onMounted(()=>{
               <form @submit.prevent="addPicture">
                 <div class="modal-body">
                   <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Description</label>
+                    <label for="exampleFormControlInput1" class="form-label">Description of pic</label>
                     <textarea v-model="description" class="form-control" rows="5"></textarea>
                   </div>
                   <div class="mb-3">

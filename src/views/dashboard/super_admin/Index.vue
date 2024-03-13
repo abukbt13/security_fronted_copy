@@ -18,9 +18,12 @@ const status =ref('')
 const user_id =ref('')
 const phone =ref('')
 
-function clearFields(){
+const clearFields =async () =>{
+  status.value=''
+  edit.value = true
+  email.value = ''
   name.value = ''
-  email.value=''
+  phone.value = ''
   password.value=''
 }
 
@@ -144,7 +147,7 @@ onMounted(()=>{
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Admin</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Forensic Analyst</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -167,7 +170,7 @@ onMounted(()=>{
                 <input type="password" class="form-control" v-model="password" >
               </div>
               <div class="">
-                <button type="submit" v-if="edit" data-bs-dismiss="modal" class="float-end  btn btn-primary btn-block">Create Admin</button>
+                <button type="submit" v-if="edit" data-bs-dismiss="modal" class="float-end  btn btn-primary btn-block">Admin</button>
                 <button type="submit"  data-bs-dismiss="modal"  v-else class="float-end   btn btn-primary btn-block">Update Admin</button>
               </div>
             </form>
@@ -193,9 +196,6 @@ onMounted(()=>{
                   <td class="border">#</td>
                   <td class="border">Title</td>
                   <td class="border">Details</td>
-                  <td class="border">Details</td>
-                  <td class="border">Platform</td>
-                  <td class="border">Operation</td>
                 </tr>
 
                 <!-- Table Rows (Generated dynamically using Vue.js) -->
@@ -203,12 +203,8 @@ onMounted(()=>{
                   <td class="border">{{ log.id }}</td>
                   <td class="border">{{ log.title }}</td>
                   <!-- <td class="border">{{ log.details }}</td> -->
-                  <td class="border">{{ log.platform }}</td>
-                  <td class="border">{{ log.platform }}</td>
-                  <td class="border">{{ log.platform }}</td>
-                  <td>
-                    <button @click="secretKeyGen(cases.id)" data-bs-toggle="modal" data-bs-target="#secret" class="btn m-2 bg-primary btn-primary">View</button>
-                  </td>
+                  <td class="border">{{ log.details }}</td>
+
                 </tr>
               </table>
             </div>
@@ -270,7 +266,7 @@ onMounted(()=>{
           </div>
         </div>
         <div class="offcanvas-body">
-          <li style="padding: 1rem;cursor: progress;font-size: 18px;" data-bs-toggle="modal" data-bs-target="#add_admin" class="mt-3 bg-primary list-unstyled "><i class="bi  bi-plus"></i>Add Forensic Analyst</li>
+          <li style="padding: 1rem;cursor: progress;font-size: 18px;" data-bs-toggle="modal" @click="clearFields()" data-bs-target="#add_admin" class="mt-3 bg-primary list-unstyled "><i class="bi  bi-plus"></i>Add Forensic Analyst</li>
           <li style="padding: 1rem;cursor: progress;font-size: 18px;" data-bs-toggle="modal" data-bs-target="#view_logs" class="mt-3 bg-primary list-unstyled "><i class="bi  bi-eye-fill"></i>View Logs</li>
           <li style="padding: 1rem;cursor: progress;font-size: 18px;" data-bs-toggle="modal" data-bs-target="#case_file" class=" mt-3 bg-primary  text-decoration-none" to="super_admin/show_admin"><i class="bi  bi-eye-fill"></i> Show Cases files</li>
           <hr>

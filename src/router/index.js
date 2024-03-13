@@ -51,7 +51,7 @@ const router = createRouter({
       component : Super_admin_Dashboard
     },
     {
-      path: '/dashboard/admin/case_details/:case_id/:key_id',
+      path: '/dashboard/admin/case_details/:key_id',
       component : Case_details
     },
     {
