@@ -193,9 +193,11 @@ onMounted(()=>{
   <div v-if="view" class="view m-3">
 <!--    description-->
     <div  class="description">
-     <h3 class="text-primary">Description</h3>
-
-      <textarea class="form-control"   rows="5">{{evidences[0].description}}</textarea>
+     <h3 class="text-dark details text-center">Case Description</h3>
+            <p class="p">Plaintiff Name:<span class="text-primary">{{evidences[0].plaintiff_name}}</span></p>
+            <p class="p">Case Name:<span class="text-primary">{{evidences[0].case_name}}</span></p>
+            <p class="p">Defendant Name:<span class="text-primary">{{evidences[0].defendant_name}}</span></p>
+            <p class="p">Case description:<span class="text-primary">{{evidences[0].description}}</span></p>
       <button class="btn  mt-2 btn-primary float-end"  data-bs-toggle="modal" data-bs-target="#editDescription">
         Edit description <i  class="bi bi-pen-fill"></i>
       </button>
@@ -489,6 +491,10 @@ onMounted(()=>{
   border: 2px solid pink;
   height: 20rem;
 }
+.p{
+  font-size:23px;
+}
+
 @media (min-width: 300px) and (max-width: 780px) {
   .view{
     display: grid;
