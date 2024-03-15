@@ -295,9 +295,10 @@ onMounted(()=>{
             <th colspan="4" class="text-uppercase text-center">All cases</th>
           </tr>
           <tr class="bg-secondary text-white text-center text-uppercase">
-            <td class="border">#</td>
+
             <td class="border">case Name</td>
             <td class="border">Description</td>
+            <td class="border"></td>
           </tr>
 
           <!-- Table Rows (Generated dynamically using Vue.js) -->
