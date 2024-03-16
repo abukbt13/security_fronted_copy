@@ -300,7 +300,6 @@ onMounted(()=>{
             <td class="border">Description</td>
             <td class="border"></td>
           </tr>
-
           <!-- Table Rows (Generated dynamically using Vue.js) -->
           <tr  v-for="cases in case_date" :key="cases">
             <td class="border">{{ cases.case_name }}</td>
