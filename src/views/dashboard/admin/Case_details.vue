@@ -191,9 +191,13 @@ onMounted(()=>{
 
 
   <div v-if="view" class="view m-3">
+
+
+
+
 <!--    description-->
     <div  class="description">
-     <h3 class="text-dark details text-center">Case Description</h3>
+     <h3 class="text-dark details text-center">Case Description </h3>
             <p class="p">Plaintiff Name:<span class="text-primary">{{evidences[0].plaintiff_name}}</span></p>
             <p class="p">Case Name:<span class="text-primary">{{evidences[0].case_name}}</span></p>
             <p class="p">Defendant Name:<span class="text-primary">{{evidences[0].defendant_name}}</span></p>
@@ -226,6 +230,12 @@ onMounted(()=>{
         </div>
       </div>
     </div>
+
+
+
+
+
+
 
     <!--    videos-->
       <div class="vid"><h2>Saved Evidences</h2>

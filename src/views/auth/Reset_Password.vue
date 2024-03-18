@@ -51,6 +51,8 @@ const ResetPassword =async () => {
 
 <template>
   <Header />
+  <h2 v-if="status" class="p-3 m-4 bg-danger text-white text-center">{{ status }}</h2>
+
   <section class="vh-100">
     <div class="row px-3 d-flex justify-content-center align-items-center h-100">
 
@@ -63,11 +65,11 @@ const ResetPassword =async () => {
 
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">New Password</label>
-            <input type="text" class="form-control" v-model="password">
+            <input type="password" class="form-control" v-model="password">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
-            <input type="text" class="form-control" v-model="c_password">
+            <input type="password" class="form-control" v-model="c_password">
           </div>
           <div class="">
             <button type="submit" class="w-100 btn btn-primary btn-block">Reset Password</button>

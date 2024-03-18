@@ -2,10 +2,38 @@
 
 <script setup>
 
+import {auth} from "@/compossables/auth";
+const {base_url} = auth()
+import axios from "axios";
+import {ref} from "vue";
+
+const email = ref('')
+const phone = ref('')
+const name = ref('')
+const status = ref('')
+const message = ref('')
+const inquire =async () => {
+  const formData = new FormData();
+  formData.append('email', email.value)
+  formData.append('name', name.value)
+  formData.append('phone', phone.value)
+  formData.append('message', message.value)
+  const res = await axios.post(base_url.value+'user/inquire',formData)
+  alert(res)
+  if(res.status === 200) {
+    if (res.data.status === 'success') {
+      status.value = 'Feedback successfully sent will respond to you sooner'
+    } else {
+      status.value = res.data.message
+    }
+  }
+}
 </script>
 
 <template>
   <div style="background-color: rgb(100,170,255)" class="row p-3">
+    <h2 v-if="status" class="p-3 m-4 bg-danger text-white">{{ status }}</h2>
+
     <div class="col col-6">
       <h3 class="shadow text-white">TOPGUARD CLOUD</h3>
       <p>
@@ -54,14 +82,19 @@
     <div class="col">
       <h2>Contact Us</h2>
 
-      <form action="../processor.php" method="post">
+      <form @submit.prevent="inquire">
 
+        <label for="email">Name:</label>
+        <input type="email" v-model="name" class="form-control" required>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" v-model="email" class="form-control" required>
+
+        <label for="email">Phone:</label>
+        <input type="number" v-model="phone" class="form-control"  required>
 
 
         <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
+        <textarea id="message" v-model="message" class="form-control"  rows="4" required></textarea>
 
         <button type="submit" name="inquire" class="float-end">Send</button>
       </form>

@@ -14,6 +14,7 @@ const logs = ref([])
 const admins = ref([])
 const cases = ref([])
 const secret_keys = ref([])
+const inquiries = ref([])
 const edit =ref(true)
 const status =ref('')
 const user_id =ref('')
@@ -37,10 +38,6 @@ const createAdmin =async () => {
   formData.append('password', password.value)
   const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9!@#\$%\^&\*])(?=.{8,})/;
   const isValidPassword = regex.test(password.value);
-
-
-
-
 
   if(edit.value === true) {
     if (!isValidPassword) {
@@ -104,6 +101,10 @@ const getCases = async () =>{
   const res = await axios.get(base_url.value+'admin/show_cases',authHeader)
   cases.value = res.data.cases
 }
+const getInquiries = async () =>{
+  const res = await axios.get(base_url.value+'admin/show_inquiries',authHeader)
+  inquiries.value = res.data.inquiries
+}
 
 function  secretKeyGen($id){
   case_id.value=$id
@@ -125,7 +126,7 @@ function editAdmin($data){
   user_id.value = $data.id
   edit.value = false
   email.value = $data.email
-  phone.value = $data.phone
+  phone.value = $data.phone.slice(4)
   name.value = $data.name
 }
 onMounted(()=>{
@@ -134,6 +135,7 @@ onMounted(()=>{
   getAdmins()
   getSecretKeys()
   getCases()
+  getInquiries()
 })
 </script>
 
@@ -292,6 +294,40 @@ onMounted(()=>{
         </div>
       </div>
     </div>
+    <div class="modal fade" id="inquiries" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 text-primary" id="staticBackdropLabel">Inquiries</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="ms-4 table-responsive">
+              <table class="table table-responsive border table-hover table-bordered">
+                <!-- Table Header -->
+
+                <tr>
+                  <td class="border">Full Name</td>
+                  <td class="border">User Email</td>
+                  <td class="border">Phone</td>
+                  <td class="border">Message</td>
+                </tr>
+                <tr v-for="inquirie in inquiries" :key="inquirie">
+                  <td class="border">{{ inquirie.name }}</td>
+                  <td class="border">{{ inquirie.email }}</td>
+                  <td class="border">{{ inquirie.phone }}</td>
+                  <td class="border">{{ inquirie.message }}</td>
+
+                </tr>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
 
     <div @click="isSidebarOpen = isSidebarOpen === false ? true : false" class="d-block d-md-none d-lg-none">
       <i style="font-size: 40px; color: blue;" class="bi bi-list-task"></i>
@@ -310,6 +346,7 @@ onMounted(()=>{
           <li style="padding: 1rem;cursor: progress;font-size: 18px;" data-bs-toggle="modal" data-bs-target="#view_logs" class="mt-3 bg-primary list-unstyled "><i class="bi  bi-eye-fill"></i>View Logs</li>
           <li style="padding: 1rem;cursor: progress;font-size: 18px;" data-bs-toggle="modal" data-bs-target="#case_file" class=" mt-3 bg-primary  text-decoration-none" to="super_admin/show_admin"><i class="bi  bi-eye-fill"></i> Show Cases files</li>
           <li style="padding: 1rem;cursor: progress;font-size: 18px;" data-bs-toggle="modal" data-bs-target="#secret_keys" class=" mt-3 bg-primary  text-decoration-none" to="super_admin/show_admin"><i class="bi  bi-eye-fill"></i>show Secret Key</li>
+          <li style="padding: 1rem;cursor: progress;font-size: 18px;" data-bs-toggle="modal" data-bs-target="#inquiries" class=" mt-3 bg-primary  text-decoration-none"><i class="bi  bi-eye-fill"></i>Inquiries</li>
           <hr>
         </div>
       </div>
@@ -317,7 +354,7 @@ onMounted(()=>{
         <table class="table table-responsive border table-hover table-bordered">
           <!-- Table Header -->
           <tr>
-            <th colspan="4" class="text-uppercase text-center">All Admins</th>
+            <th colspan="4" class="text-uppercase text-center">All Forensic Analysts</th>
           </tr>
           <tr>
             <td class="border">#</td>
