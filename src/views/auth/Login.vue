@@ -58,7 +58,7 @@ const login =async () => {
         <div class="error text-center bg-dark text-primary text-uppercase p-2" v-if="status">{{status + ' !'}}</div>
 
         <div class="error text-center bg-danger text-white text-uppercase">{{unique_id}}</div>
-        <h2 class="text-center text-uppercase">Login here</h2>
+        <h2 class="text-center text-uppercase">login</h2>
         <form @submit.prevent="login">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email address</label>

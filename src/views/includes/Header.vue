@@ -27,7 +27,7 @@ onMounted(()=>{
   <div style="background-color: rgb(100,170,255);" class="head-title d-flex justify-content-around align-items-center">
   <div class="d-flex  align-items-center">
     <i style="font-size: 34px; color: blue;" class="bi  bi-building-fill-lock"></i>
-    <router-link to="/" class="text-uppercase text-white  text-decoration-none">Evidence management system</router-link>
+    <router-link to="/" class="text-uppercase text-white  text-decoration-none">Secure Evidence management system</router-link>
   </div>
 
     <div v-if="details" class="links">

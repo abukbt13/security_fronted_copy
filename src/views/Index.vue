@@ -13,19 +13,16 @@ import {ref} from "vue";
 
     <div class="row mt-3">
       <div class="col-sm-12 col-md-6 col-lg-6  d-flex flex-column justify-content-center">
-        <h2 style="font-size: 23px" class="text-center  text-primary">
-          Your top software guard
+        <h2 style="font-size: 23px" class="text-center">
+           Secure Evidence management system
         </h2>
-        <p style="font-size: 20px;" class="text-center text-primary ">
+        <p style="font-size: 20px;" class="text-center ">
           Secure your data  and information here to ensure good runtime of your business or your individual sensitive  personal information. We keep your information safe here preventing your data from any loss or making sure they are confidential.
         </p>
 
-        <div class="d-flex justify-content-center">
-          <router-link to="register" style="background-color: pink;color:blue;" class="btn">Get Started</router-link>
-        </div>
       </div>
       <div  class="col-sm-12 col-md-6 col-lg-6 intro bg-light text-center">
-        At TopGuard Cloud, we strive to build novel software solutions to assist Criminal Investigations through <br> efficient case management, enhanced investigative workflow and utilising<br>  digital forensic intelligence.
+        At Secure Evidence management system, we strive to provide  solutions to assist Criminal Investigations through <br> efficient case management, enhanced investigative workflow and utilising<br>  digital forensic intelligence.
       </div>
     </div>
 

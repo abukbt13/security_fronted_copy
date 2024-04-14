@@ -10,6 +10,7 @@ import Super_admin_Dashboard from "@/views/dashboard/super_admin/Index.vue";
 import Case_details from '@/views/dashboard/admin/Case_details.vue'
 import Show_admin from '@/views/dashboard/super_admin/Show_admin.vue'
 import View_evidence from "@/views/dashboard/admin/View_evidence.vue";
+import About from "@/views/About.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,10 @@ const router = createRouter({
     {
       path: '/login',
       component : Login
+    },
+    {
+      path: '/about_us',
+      component : About
     },
     {
       path: '/validate/:id',

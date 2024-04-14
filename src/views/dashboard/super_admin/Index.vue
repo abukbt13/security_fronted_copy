@@ -143,7 +143,6 @@ onMounted(()=>{
   <div class="head-section">
     <Header />
   </div>
-  <h2 v-if="status" class="p-3 m-4 bg-danger text-white">{{ status }}</h2>
   <div  class="">
 
 
@@ -317,7 +316,7 @@ onMounted(()=>{
                   <td class="border">{{ inquirie.name }}</td>
                   <td class="border">{{ inquirie.email }}</td>
                   <td class="border">{{ inquirie.phone }}</td>
-                  <td class="border">{{ inquirie.message }}</td>
+                  <td class="border"><textarea name="" class="" id="" cols="30" >{{ inquirie.message }}</textarea></td>
 
                 </tr>
               </table>
@@ -332,6 +331,8 @@ onMounted(()=>{
     <div @click="isSidebarOpen = isSidebarOpen === false ? true : false" class="d-block d-md-none d-lg-none">
       <i style="font-size: 40px; color: blue;" class="bi bi-list-task"></i>
     </div>
+
+    <div class="bg-success" v-if="status">{{status}}</div>
 
     <div class="d-flex ps-3 pt-4">
       <div id="sidebar" class="sidebar d-md-block d-lg-block" :class="isSidebarOpen ? '':'d-none'">

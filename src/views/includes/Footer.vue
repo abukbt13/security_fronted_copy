@@ -19,7 +19,6 @@ const inquire =async () => {
   formData.append('phone', phone.value)
   formData.append('message', message.value)
   const res = await axios.post(base_url.value+'user/inquire',formData)
-  alert(res)
   if(res.status === 200) {
     if (res.data.status === 'success') {
       status.value = 'Feedback successfully sent will respond to you sooner'
@@ -35,9 +34,9 @@ const inquire =async () => {
     <h2 v-if="status" class="p-3 m-4 bg-danger text-white">{{ status }}</h2>
 
     <div class="col col-6">
-      <h3 class="shadow text-white">TOPGUARD CLOUD</h3>
+      <h3 class="shadow text-white">Secure Evidence management system</h3>
       <p>
-        Your secure forensic cloud for your data.
+        Secure your forensic evidence.
       </p>
     </div>
 
@@ -52,25 +51,20 @@ const inquire =async () => {
       </li>
         <br>
       </router-link>
-      <router-link to="login"  class="mybtn text-decoration-none text-light">
-      <li class="list-unstyled ">
-         Register
-      </li>
-        <br>
-      </router-link>
-      <router-link to="login"  class="mybtn text-decoration-none text-light">
+
+      <router-link to="/dashboard"  class="mybtn text-decoration-none text-light">
       <li class="list-unstyled ">
          Dashboard
       </li>
       </router-link>
       <br>
-      <router-link to="login"  class="mybtn text-decoration-none text-light">
+      <router-link to="/about_us"  class="mybtn text-decoration-none text-light">
       <li class="list-unstyled ">
          About us
       </li>
       </router-link>
       <br>
-      <router-link to="login"  class="mybtn text-decoration-none text-light">
+      <router-link to="/about_us"  class="mybtn text-decoration-none text-light">
       <li class="list-unstyled ">
          Contacts
       </li>
@@ -84,8 +78,8 @@ const inquire =async () => {
 
       <form @submit.prevent="inquire">
 
-        <label for="email">Name:</label>
-        <input type="email" v-model="name" class="form-control" required>
+        <label for="email">Full Name:</label>
+        <input type="text" v-model="name" class="form-control" required>
         <label for="email">Email:</label>
         <input type="email" v-model="email" class="form-control" required>
 
