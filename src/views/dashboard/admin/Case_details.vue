@@ -53,7 +53,7 @@ const addPicture =async () => {
     await getPicture()
   }
  else {
-    status.value = 'Something went wrong try again letter'
+    status.value = res.data.message
   }
 }
 
@@ -70,6 +70,9 @@ const addVideo =async () => {
   if(res.data.status === 'success') {
     status.value = res.data.message
     await getVideo()
+  }
+  else {
+    status.value = res.data.message
   }
 }
 const  getVideo = async () => {
@@ -133,14 +136,19 @@ const addDocument =async () => {
     status.value = res.data.message
     await getDocument()
   }
+  else {
+    status.value = res.data.message
+  }
 
 }
+
 const  getDocument = async () => {
   const res = await axios.get(base_url.value + 'document/show/'+key_id, authHeader)
   if(res){
     all_docs.value = res.data.documents
   }
 }
+
 const singlevideo = ref([])
 function showSingleVideo(data){
   singlevideo.value = data
@@ -187,7 +195,7 @@ onMounted(()=>{
 
 
 
-<h3 class="p-4 bg-info text-white" v-if="status">{{status}}</h3>
+<h3 class="p-4 bg-info text-white bg-danger" v-if="status">{{status}}</h3>
 
 
   <div v-if="view" class="view m-3">
@@ -238,8 +246,7 @@ onMounted(()=>{
 
 
     <!--    videos-->
-      <div class="vid"><h2>Saved Evidences</h2>
-        <p>Video Evidences</p>
+      <div class="vid"><h2>Saved Video Evidences</h2>
         <table class="table table-bordered border">
           <thead>
           <tr>

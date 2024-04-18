@@ -52,7 +52,7 @@ const inquire =async () => {
         <br>
       </router-link>
 
-      <router-link to="/dashboard"  class="mybtn text-decoration-none text-light">
+      <router-link to="/dashboard/super_admin"  class="mybtn text-decoration-none text-light">
       <li class="list-unstyled ">
          Dashboard
       </li>

@@ -248,7 +248,6 @@ onMounted(()=>{
                   <td class="border">{{ cases.defendant_name }}</td>
                   <td class="border">{{ cases.plaintiff_name }}</td>
                   <td class="border">{{ cases.case_name }}</td>
-                  <td class="border"><button class="btn btn-sm bg-primary">More info</button></td>
 
                 </tr>
               </table>
@@ -263,7 +262,7 @@ onMounted(()=>{
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5 text-primary" id="staticBackdropLabel">All Cases</h1>
+            <h1 class="modal-title fs-5 text-primary ms-4 ps-4" id="staticBackdropLabel">Keys for all Users for their cases</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -273,16 +272,12 @@ onMounted(()=>{
                 <!-- Table Header -->
 
                 <tr>
-                  <td class="border">User Email</td>
-                  <td class="border">Secret Key</td>
-                  <td class="border">Case Name</td>
-                  <td class="border">Description</td>
+                  <th class="border">User Email</th>
+                  <th class="border">Secret Key</th>
                 </tr>
                 <tr v-for="secret_key in secret_keys" :key="secret_key">
                   <td class="border">{{ secret_key.email }}</td>
                   <td class="border">{{ secret_key.u_key }}</td>
-                  <td class="border">{{ secret_key.case_name }}</td>
-                  <td class="border">{{ secret_key.description }}</td>
 
                 </tr>
               </table>
@@ -297,7 +292,7 @@ onMounted(()=>{
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5 text-primary" id="staticBackdropLabel">Inquiries</h1>
+            <h1 class="modal-title fs-5 text-primary ms-4 ps-4" id="staticBackdropLabel">All Inquiries from clients</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -307,10 +302,10 @@ onMounted(()=>{
                 <!-- Table Header -->
 
                 <tr>
-                  <td class="border">Full Name</td>
-                  <td class="border">User Email</td>
-                  <td class="border">Phone</td>
-                  <td class="border">Message</td>
+                  <th class="border">Full Name</th>
+                  <th class="border">User Email</th>
+                  <th class="border">Phone</th>
+                  <th class="border">Message</th>
                 </tr>
                 <tr v-for="inquirie in inquiries" :key="inquirie">
                   <td class="border">{{ inquirie.name }}</td>

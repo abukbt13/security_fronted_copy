@@ -191,7 +191,7 @@ onMounted(()=>{
 
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Enter Secret Key</label>
-                <input type="text" class="form-control" v-model="key">
+                <input type="password" class="form-control" v-model="key">
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Case</label>
